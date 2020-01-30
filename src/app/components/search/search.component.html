@@ -9,9 +9,9 @@
     </div>
 
     <hr class="mt-2 mb-5">
-
     <div class="row text-center text-lg-left">
-        <div *ngFor="let photo of photos" class="col-lg-3 col-md-4 col-6">
+        <app-photo-modal [status]="status"></app-photo-modal>
+        <div (click)="setModalStatus(true)" *ngFor="let photo of photos" class="col-lg-3 col-md-4 col-6">
             <app-photo [photo]="photo"></app-photo>
         </div>
     </div>

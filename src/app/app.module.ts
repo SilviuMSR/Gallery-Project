@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { SearchComponent } from './components/search/search.component';
 import { MetricsComponent } from './components/metrics/metrics.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PhotoComponent } from './components/photo/photo.component';
+import { PhotoModalComponent } from './components/photo-modal/photo-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { PhotoComponent } from './components/photo/photo.component';
     SearchComponent,
     MetricsComponent,
     NavbarComponent,
-    PhotoComponent
+    PhotoComponent,
+    PhotoModalComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
