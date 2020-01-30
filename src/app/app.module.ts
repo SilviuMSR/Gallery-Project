@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
 import { MetricsComponent } from './components/metrics/metrics.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PhotoComponent } from './components/photo/photo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     MetricsComponent,
-    NavbarComponent
+    NavbarComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,

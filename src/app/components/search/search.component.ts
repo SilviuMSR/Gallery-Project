@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
+import { PhotoService } from '../../services/photo.service';
 
 @Component({
   selector: 'app-search',
@@ -9,13 +9,17 @@ import { ApiService } from '../../services/api.service';
 export class SearchComponent implements OnInit {
 
   inputText: String = '';
-  constructor(private apiService: ApiService) { }
+  photos: Array<{}>;
+  constructor(private photoService: PhotoService) { }
 
   ngOnInit() {
   }
 
   fetchPhotos = () => {
-    this.apiService.fetchPhotos()
+    this.photoService.fetchPhotosByQuery(this.inputText).subscribe((result: any) => {
+      let mappedResult = result.results.map(item => ({ id: item.id, urls: item.urls, likes: item.likes, tags: item.tags, description: item.description }))
+      this.photos = mappedResult
+    })
   }
 
 }

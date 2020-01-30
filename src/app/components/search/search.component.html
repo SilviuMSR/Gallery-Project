@@ -1,12 +1,19 @@
 <div class="container">
-    <div class="d-flex flex-column m-lg-4 p-3 align-items-center searchContainer">
-        <div>
-            <form class="form-inline my-2 my-lg-0">
-                <input [(ngModel)]="inputText" [ngModelOptions]="{standalone: true}" class="form-control mr-sm-2"
-                    type="text" placeholder="Search">
-                <button (click)="fetchPhotos()" class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            <p style="text-align: center; padding-top: 8px;">Results for {{inputText}}</p>
+    <div class="d-flex p-2 flex-row">
+        <h1 class="font-weight-light text-center text-lg-left mt-2 mb-2">Results for {{inputText}}</h1>
+        <form class="form-inline ml-auto mt-2 mb-2">
+            <input [(ngModel)]="inputText" [ngModelOptions]="{standalone: true}" class="form-control mr-sm-2"
+                type="text" placeholder="Search">
+            <button (click)="fetchPhotos()" class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+
+    <hr class="mt-2 mb-5">
+
+    <div class="row text-center text-lg-left">
+        <div *ngFor="let photo of photos" class="col-lg-3 col-md-4 col-6">
+            <app-photo [photo]="photo"></app-photo>
         </div>
     </div>
+
 </div>
