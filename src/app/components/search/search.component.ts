@@ -10,6 +10,8 @@ export class SearchComponent implements OnInit {
 
   inputText: String = '';
   photos: Array<{}>;
+  currentPhoto: any;
+  splitScreen: boolean = false;
   status: boolean = false;
   constructor(private photoService: PhotoService) { }
 
@@ -23,8 +25,9 @@ export class SearchComponent implements OnInit {
     })
   }
 
-  setModalStatus = value => {
-    this.status = value;
+  photoClickedHandler = photo => {
+    this.currentPhoto = photo
+    this.splitScreen = true
   }
 
 }

@@ -1,3 +1,15 @@
 .searchContainer {
     background-color: #eeecec;
 }
+
+.halfScreen {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: 0px;
+    flex: 3;
+}
+
+.rightPart {
+    flex: 1;
+}
