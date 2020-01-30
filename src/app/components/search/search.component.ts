@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  inputText: String = '';
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+  }
+
+  fetchPhotos = () => {
+    this.apiService.fetchPhotos()
   }
 
 }

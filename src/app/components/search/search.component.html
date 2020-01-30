@@ -1,1 +1,12 @@
-<p>search works!</p>
+<div class="container">
+    <div class="d-flex flex-column m-lg-4 p-3 align-items-center searchContainer">
+        <div>
+            <form class="form-inline my-2 my-lg-0">
+                <input [(ngModel)]="inputText" [ngModelOptions]="{standalone: true}" class="form-control mr-sm-2"
+                    type="text" placeholder="Search">
+                <button (click)="fetchPhotos()" class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <p style="text-align: center; padding-top: 8px;">Results for {{inputText}}</p>
+        </div>
+    </div>
+</div>
