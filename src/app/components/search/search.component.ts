@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { PhotoService } from '../../services/photo.service';
+import { PhotoService, Photo } from '../../services/photo.service';
+import { PhotoPublicService } from '../../services/photo-public.service'
 import { MetricsService } from '../../services/metrics.service'
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  providers: [
+    { provide: PhotoService, useClass: PhotoPublicService }
+  ]
 })
 export class SearchComponent implements OnInit {
 
   inputText: String = '';
-  photos: Array<{}>;
-  currentPhoto: any;
+  photos: Array<Photo>;
+  currentPhoto: Photo;
   splitScreen: boolean = false;
   status: boolean = false;
   constructor(private photoService: PhotoService, private metricsService: MetricsService) { }
@@ -20,10 +24,9 @@ export class SearchComponent implements OnInit {
   }
 
   fetchPhotosHandler = () => {
-    this.photoService.fetchPhotosByQuery(this.inputText).subscribe((result: any) => {
-      let mappedResult = result.results.map(item => ({ id: item.id, urls: item.urls, likes: item.likes, tags: item.tags, description: item.description }))
-      this.photos = mappedResult
-      this.metricsService.setPhotosHandler(result.results)
+    this.photoService.fetchPhotosByQuery(this.inputText).subscribe((photos: Photo[]) => {
+      this.photos = photos
+      this.metricsService.setPhotosHandler(this.photos)
       this.inputText = ''
     })
   }
