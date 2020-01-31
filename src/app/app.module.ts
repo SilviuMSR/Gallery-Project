@@ -10,6 +10,7 @@ import { SearchComponent } from './components/search/search.component';
 import { MetricsComponent } from './components/metrics/metrics.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PhotoComponent } from './components/photo/photo.component';
+import { PhotoDetailsComponent } from './components/photo-details/photo-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PhotoComponent } from './components/photo/photo.component';
     SearchComponent,
     MetricsComponent,
     NavbarComponent,
-    PhotoComponent
+    PhotoComponent,
+    PhotoDetailsComponent
   ],
   imports: [
     BrowserModule,

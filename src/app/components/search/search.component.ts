@@ -18,16 +18,22 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  fetchPhotos = () => {
+  fetchPhotosHandler = () => {
     this.photoService.fetchPhotosByQuery(this.inputText).subscribe((result: any) => {
       let mappedResult = result.results.map(item => ({ id: item.id, urls: item.urls, likes: item.likes, tags: item.tags, description: item.description }))
       this.photos = mappedResult
     })
   }
 
+  // On click photo event
   photoClickedHandler = photo => {
     this.currentPhoto = photo
     this.splitScreen = true
+  }
+
+  // Function called on event emitted by photo-details component when close details part
+  closeDetailsHandler = event => {
+    this.splitScreen = event.value
   }
 
 }
