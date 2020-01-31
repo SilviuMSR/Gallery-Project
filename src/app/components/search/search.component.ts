@@ -24,6 +24,7 @@ export class SearchComponent implements OnInit {
       let mappedResult = result.results.map(item => ({ id: item.id, urls: item.urls, likes: item.likes, tags: item.tags, description: item.description }))
       this.photos = mappedResult
       this.metricsService.setPhotosHandler(result.results)
+      this.inputText = ''
     })
   }
 

@@ -6,12 +6,21 @@
             <form class="form-inline ml-auto mt-2 mb-2">
                 <input [(ngModel)]="inputText" [ngModelOptions]="{standalone: true}" class="form-control mr-sm-2"
                     type="text" placeholder="Search">
-                <button (click)="fetchPhotosHandler()" class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                <button (click)="fetchPhotosHandler()" class="btn btn-secondary my-2 my-sm-0"
+                    type="submit">Search</button>
             </form>
         </div>
 
         <hr class="mt-2 mb-5">
         <div class="d-flex flex-row">
+            <div class="w-100 text-center" *ngIf="!photos">
+                <span>
+                    <h5 class="font-weight-light mt-2 mb-2">Search for something... </h5>
+                </span>
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
             <div class="row text-center">
                 <div *ngFor="let photo of photos" class="col-lg-3 col-md-4 col-6">
                     <app-photo (click)="photoClickedHandler(photo)" [photo]="photo"></app-photo>
@@ -21,6 +30,7 @@
     </div>
 
     <div *ngIf="splitScreen" class="d-sm-flex flex-column align-items-center rightPart">
-        <app-photo-details (onCloseDetails)="closeDetailsHandler($event)" [splitScreen]="splitScreen" [photo]="currentPhoto"></app-photo-details>
+        <app-photo-details (onCloseDetails)="closeDetailsHandler($event)" [splitScreen]="splitScreen"
+            [photo]="currentPhoto"></app-photo-details>
     </div>
 </div>
