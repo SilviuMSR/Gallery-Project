@@ -27,7 +27,6 @@ export class SearchComponent implements OnInit {
     this.photoService.fetchPhotosByQuery(this.inputText).subscribe((photos: Photo[]) => {
       this.photos = photos
       this.metricsService.setPhotosHandler(this.photos)
-      this.inputText = ''
     })
   }
 

@@ -2,7 +2,7 @@
     <div
         [ngClass]="{'container': splitScreen || !splitScreen, 'container-fluid': splitScreen, 'halfScreen': splitScreen}">
         <div class="d-flex p-2 flex-row">
-            <h1 class="font-weight-light text-center text-lg-left mt-2 mb-2">Results for {{inputText}}</h1>
+            <h1 class="font-weight-light text-center text-lg-left mt-2 mb-2">{{inputText.charAt(0).toUpperCase() + inputText.slice(1)}} Gallery</h1>
             <form class="form-inline ml-auto mt-2 mb-2">
                 <input [(ngModel)]="inputText" [ngModelOptions]="{standalone: true}" class="form-control mr-sm-2"
                     type="text" placeholder="Search">
