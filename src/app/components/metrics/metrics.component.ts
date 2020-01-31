@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MetricsService } from '../../services/metrics.service'
 
 @Component({
   selector: 'app-metrics',
@@ -7,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MetricsComponent implements OnInit {
 
-  constructor() { }
+  photos: any;
+  constructor(private metricsService: MetricsService) { }
 
   ngOnInit() {
-
-  }
+    this.photos = this.metricsService.getPhotosHandler()
+  }  
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../../services/photo.service';
+import { MetricsService } from '../../services/metrics.service'
 
 @Component({
   selector: 'app-search',
@@ -13,7 +14,7 @@ export class SearchComponent implements OnInit {
   currentPhoto: any;
   splitScreen: boolean = false;
   status: boolean = false;
-  constructor(private photoService: PhotoService) { }
+  constructor(private photoService: PhotoService, private metricsService: MetricsService) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,7 @@ export class SearchComponent implements OnInit {
     this.photoService.fetchPhotosByQuery(this.inputText).subscribe((result: any) => {
       let mappedResult = result.results.map(item => ({ id: item.id, urls: item.urls, likes: item.likes, tags: item.tags, description: item.description }))
       this.photos = mappedResult
+      this.metricsService.setPhotosHandler(result.results)
     })
   }
 
